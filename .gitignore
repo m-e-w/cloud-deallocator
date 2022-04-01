@@ -1,3 +1,8 @@
+config.json
+output.txt
+set-env.sh
+role_azure.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

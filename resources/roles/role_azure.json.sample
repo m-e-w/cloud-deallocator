@@ -1,0 +1,13 @@
+{
+    "Name": "Virtual Machine Deallacote",
+    "IsCustom": true,
+    "Description": "Can deallocate virtual machines.",
+    "Actions": [
+        "Microsoft.Compute/virtualMachines/read",
+        "Microsoft.Compute/virtualMachines/deallocate/action"
+    ],
+    "NotActions": [],
+    "AssignableScopes": [
+        "/subscriptions/1234567890"
+    ]
+}
