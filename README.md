@@ -82,7 +82,7 @@ Loads environment variables, python virtual environment and calls a python scrip
 
 1. Copy below into a text editor and replace folder paths with your own:
     ```
-    0 0 * * * source /home/$USER/Source/Envs/set-env.sh && source /home/$USER/Source/Envs/Python/venv/bin/activate && python $CLOUD_DEALLOCATOR_PATH/cloud_deallocator.py >> $CLOUD_DEALLOCATOR_PATH/bin/output.txt
+    0 0 * * * source /home/$USER/Source/Envs/set-env.sh && source /home/$USER/Source/Envs/Python/venv/bin/activate && python $CLOUD_DEALLOCATOR_PATH/cloud_deallocator.py >> $CLOUD_DEALLOCATOR_PATH/output.txt
     ```
     Above Explained:
     - 0 0 * * *
@@ -91,7 +91,7 @@ Loads environment variables, python virtual environment and calls a python scrip
         - This calls a shell script to set all the environment variables used in proceeding commands and scripts. [Example](#example-shell-script-to-set-environment-variables)
     - source /home/$USER/Source/Envs/Python/venv/bin/activate
         - This activates a specified python virtual environment
-    - python $CLOUD_DEALLOCATOR_PATH/cloud_deallocator.py >> $CLOUD_DEALLOCATOR_PATH/bin/output.txt
+    - python $CLOUD_DEALLOCATOR_PATH/cloud_deallocator.py >> $CLOUD_DEALLOCATOR_PATH/output.txt
         - This calls the script and directs stdout to a text file in the project directory
 2. Confirm cron is installed:
     ```
