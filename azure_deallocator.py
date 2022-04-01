@@ -20,7 +20,7 @@ class AzureDeallocator:
                 resource_groups = resource_group_names.split(',')
             subscription_id = os.getenv("AZURE_SUBSCRIPTION_ID")
             credential = EnvironmentCredential()
-        elif(config_source == 'json'):
+        elif(config_source == 'config.json'):
             print(datetime.datetime.now(), ": Loading config.json")
             with open('config.json') as json_file:
                 config = json.load(json_file)

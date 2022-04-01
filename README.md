@@ -59,7 +59,7 @@ Basically anything that has python.
         - ```which python```: should point to your virtual environment
         - ```env | grep AZURE```: should show the required Azure environment variables if they're loaded (Linux only)
     - The following will execute the script if you're in the same directory as it
-        - By default it will use environment variables. To use the config.json file uncomment azure_deallocator.deallocate_vms(config_source='json') and comment out azure_deallocator.deallocate_vms(config_source='env')
+        - By default it will use environment variables. To use the config.json file uncomment azure_deallocator.deallocate_vms(config_source='config.json') and comment out azure_deallocator.deallocate_vms(config_source='env')
         ```
         python cloud_deallocator.py
         ```
