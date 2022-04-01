@@ -9,14 +9,16 @@
 
 
 # Supported Platforms
-Basically anything that has python and environment variables.
+Basically anything that has python.
 
 # Requirements
-- os: Likely any modern operating system that supports python and environment variables should work (See [Example shell script to set environment variables](#example-shell-script-to-set-environment-variables))
+- os: Likely any modern operating system that supports python.
     - What I used: Fedora Linux 35 (Workstation Edition)
 - python: >= 3.10.3
     - What I used: 3.10.3
     - Packages: See [requirements.txt](requirements.txt)
+- azure: 
+    - You'll need a service principal with a role to permit reading and deallocating virtual machines.
 
 # Installation
 1. Install [python](https://www.python.org/)
@@ -39,9 +41,9 @@ Basically anything that has python and environment variables.
         ```
         pip install -r requirements.txt
         ```
-4. Create a service principal and environment variables for development
+4. Create a service principal and optionally define environment variables for development
     - Checkout [docs](https://docs.microsoft.com/en-us/azure/developer/python/configure-local-development-environment?tabs=cmd#configure-authentication) for guidance on configuring a service principal and environment variables.
-    - At the moment Azure credentials are imported from environment variables. See [set-env.sh.sample](scripts/set-env.sh.sample) for a list of sample environment variables.
+    - Azure credentials can be imported from environment variables or a config.json file. See [set-env.sh.sample](scripts/set-env.sh.sample) for a list of sample environment variables.
 5. Create a custom role for Azure
     - In order for the script to function it requires the following actions: 
         - "Microsoft.Compute/virtualMachines/read"
@@ -53,10 +55,11 @@ Basically anything that has python and environment variables.
     - Apply the custom role you just created to a specific resource group or subscription
     - See [docs](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=current) for guidance on how to apply a role assignment in Azure.
 7. Call the script
-    - Make sure you have your virtual environment activated and environment variables loaded
+    - Make sure you have your virtual environment activated and config.json file populated or environment variables loaded
         - ```which python```: should point to your virtual environment
         - ```env | grep AZURE```: should show the required Azure environment variables if they're loaded (Linux only)
     - The following will execute the script if you're in the same directory as it
+        - By default it will use environment variables. To use the config.json file uncomment azure_deallocator.deallocate_vms(config_source='json') and comment out azure_deallocator.deallocate_vms(config_source='env')
         ```
         python cloud_deallocator.py
         ```
